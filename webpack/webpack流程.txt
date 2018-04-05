@@ -1,0 +1,72 @@
+export 导出     impor 导入 (webpack里要使用require)
+
+npm init  //初始化
+
+npm install webpack save-dev   //安装依赖
+npm install webpack-dev-server save-dev
+
+//在目录下创建一个js文件 webpack.config.js,并初始化内容
+var config={
+
+};
+module.export = config
+
+//在package.json的scripts里增加一个快速启动 webpack-dev-server 服务的脚本
+{
+	"scripts":{
+		"dev":"webpack-dev-server --open --config webpack.config.js"
+		 //可以配置端口、ip "dev":"webpack-dev-server --host 172.172.172.1 --port 8888 --open --config webpack.config.js"
+	}
+}
+
+//在目录下新建一个空的main.js作为入口的文件，然后在webpack.config.js中进行入口和输出的配置:
+var path = require('path');
+var config = {
+	entry:{
+		main:'./main'
+	},
+	output:{
+		path:path.join(__dirname,'./dist'),
+		publishPath:'/dist/',
+		filename:'main.js'
+	}
+};
+modeule.exports = config;
+
+//新建index.html文件    //引入js的路径是/dist/main.js
+npm run dev
+
+
+//////////////这里可以不写进去///////////////////////
+//增加css的加载器
+npm install css-loader --save-dev
+npm install style-loader --save-dev
+
+//在webpack.config.js中配置loader
+...
+module:{
+	rules:[
+		{
+			test:/\.css/,
+			use:[
+				'style-loader',
+				'css-loader'
+			]
+		}
+	]
+}
+
+//main.js
+require('./style.css');
+加入这句就可以导入css文件
+////////////////////////////////////////////////////
+
+因为可以使用一个extract-text-webpack-plugin的插件把散落在各地的css提取出来，并生成一个main.css的文件，并在index.html里通过link的形式加载
+
+npm install extract-text-webpack-lugin --save-dev
+然后在webpack.config.js中导入插件，并改写loader的配置
+
+//导入插件
+var ExtractTexPlugin = require('extract-text-webpack-plugin');
+
+var config=

@@ -1,0 +1,7 @@
+general Version Build都要增加
+Auto*** manage signing要取消
+然后自己选择signing
+Destination选择Generic IOS Device
+build
+archive生成包，然后导出
+登录apple开发者中心上传即可

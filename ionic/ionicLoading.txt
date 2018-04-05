@@ -1,0 +1,44 @@
+<ion-spinner icon="android"></ion-spinner>
+<ion-spinner icon="ios" class="spinner-light"></ion-spinner>
+<ion-spinner icon="ios-small" class="spinner-dark"></ion-spinner>
+<ion-spinner icon="bubbles" class="spinner-stable"></ion-spinner>
+<ion-spinner icon="circles" class="spinner-positive"></ion-spinner>
+<ion-spinner icon="crescent" class="spinner-royal"></ion-spinner>
+<ion-spinner icon="dots" class="spinner-calm"></ion-spinner>
+<ion-spinner icon="lines" class="spinner-balanced"></ion-spinner>
+<ion-spinner icon="ripple" class="spinner-assertive"></ion-spinner>
+<ion-spinner icon="spiral" class="spinner-energized"></ion-spinner>
+
+html：
+
+<body ng-app="myApp">
+    <ion-content ng-controller="Ctrl"></ion-content>
+</body>
+
+css：
+
+.item-myicon{
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+.item-myicon ion-spinner {
+    float: left;
+    margin: 0;
+    margin-right: .5em;
+    margin-top: -0.2em;
+}
+.spinner svg {
+    width: 30px;
+    fill: #fff;
+}
+
+js：
+
+angular.module('myApp', ['ionic'])
+    .controller('Ctrl',function($scope, $ionicLoading, $timeout){
+        $ionicLoading.show({
+        noBackdrop: true,
+        template: '<p class="item-myicon"><ion-spinner icon="circles" class="spinner-balanced"></ion-spinner><span>加载中···</span></p>'
+        });
+    });

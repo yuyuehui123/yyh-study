@@ -1,0 +1,8 @@
+open **\platforms\android\build.gradle
+build rebuild
+build genarate signed apk
+
+key alias 点进去选择
+password 1235813
+
+包在 **\platforms\android

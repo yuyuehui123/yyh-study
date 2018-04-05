@@ -1,0 +1,16 @@
+node js
+1.npm install -g npm
+2.cordova ionic
+3.gulp
+4.创建模板
+ionic start yiding tabs --type=ionic1
+cd yiding
+ionic platform add android
+ionic build android
+添加插件
+cordova plugin add ***
+
+/////////////
+1.node js
+2.git
+3.npm install -g less gulp express tslint styleint eslint

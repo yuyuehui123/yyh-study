@@ -1,0 +1,4 @@
+https://www.jianshu.com/p/900a961efc6c
+
+
+electron-packager ./ my-app --platform=win32 --arch=x64 --out=myout --electron-version=1.7.10

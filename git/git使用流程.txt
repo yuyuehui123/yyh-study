@@ -1,0 +1,14 @@
+右键git Bash Here
+git init 
+git remote add *** +git地址 (***一般用origin)
+git remote -v
+git pull *** master
+git add ***.html(//)
+git commit -m "****"
+git push *** master
+(上传)
+
+
+git clone +git地址
+(下载)
+

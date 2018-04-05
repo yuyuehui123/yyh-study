@@ -1,0 +1,3 @@
+可以用encodeURIComponent进行编码 decodeURIComponent可以解码
+
+encodeURI 会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( ) 。

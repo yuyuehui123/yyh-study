@@ -1,0 +1,40 @@
+{
+  "name": "pack",
+  "version": "1.0.0",
+  "description": "bother",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --open --history-api-fallback --config webpack.config.js",
+    "build": "webpack --progress --hide-modules --config webpack.prod.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "dfdfdf"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-runtime": "^6.26.0",
+    "css-loader": "^0.28.10",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^3.0.4",
+    "style-loader": "^0.20.2",
+    "vue-hot-reload-api": "^2.3.0",
+    "vue-loader": "^14.1.1",
+    "vue-style-loader": "^4.0.2",
+    "vue-template-compiler": "^2.5.15",
+    "webpack": "^3.11.0",
+    "webpack-cli": "^2.0.9",
+    "webpack-dev-server": "^3.0.0",
+    "webpack-merge": "^4.1.2"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "vue": "^2.5.15"
+  }
+}

@@ -1,0 +1,9 @@
+安装node js
+1.改config.xml
+2.改ionic.config.json appid
+3.ionic cordova add platform ios
+4.ionic cordova build ios
+5.ionic cordova emulate ios(运行模拟器);
+xcode 打开 .xcodeproj
+cordova plugin add ***  添加插件
+xcode info english修改为china 前缀有Privacy的都需要填写语句“是否允许***”；

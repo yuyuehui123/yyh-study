@@ -1,0 +1,24 @@
+    const compose = (...fns) =>
+        (arg) =>
+            fns.reduce(
+                (composed,f) => f(composed),
+                arg
+            );
+    const compose = function(...fns){
+        return function(arg){
+            fns.reduce(
+                function(composed,f){
+                    return f(composed)
+                },arg
+            )
+        }
+    }
+    const funA = num => {num+=5;console.log('A'+num);return num};
+    const funB = num => {num+=5;console.log('B'+num);return num};
+    const funC = num => console.log(num);
+    const fun = compose(
+        funA,
+        funB,
+        funC
+    );
+    fun(1);

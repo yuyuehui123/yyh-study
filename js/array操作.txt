@@ -1,0 +1,33 @@
+()=> sehfjshe
+//不加花括号就是 return
+
+const schools=[
+    "Yorktown",
+    "Washington & Lee",
+    "Wakefield"
+]
+
+//filter筛选数组
+const wSchool=schools.filter(school=> school[0]=== "W");
+
+//map重新生成数组
+const highSchools=schools.map(school=>`${school} High School`)
+
+Object.keys方法可以用来获得某个对象中属性键的数组。
+
+//reduce可以将数组转换成任意值
+arr.reduce(callback[, initialValue]) — More From MDN
+
+callback（一个在数组中每一项上调用的函数，接受四个函数：）
+    previousValue（上一次调用回调函数时的返回值，或者初始值）
+    currentValue（当前正在处理的数组元素）
+    currentIndex（当前正在处理的数组元素下标）
+    array（调用reduce()方法的数组）
+initialValue（可选的初始值。作为第一次调用回调函数时传给previousValue的值）
+
+const colors = ["red","red","green","blue","green"];
+const distinctColors = color.reduce(
+    (distinct,color)=>
+        (distinct.indexOf(color)!==1) ? distinct : [...distinct,color]
+    ,[]
+)

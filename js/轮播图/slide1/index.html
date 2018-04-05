@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            width:1000px;
+            height:400px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .img-container{
+            font-size: 0;
+            white-space:nowrap;
+            height: 100%;
+            position: relative;
+        }
+        .img{
+            vertical-align: bottom;
+            margin:0;
+            position:absolute;
+            left:0;
+        }
+        .list-container{
+            position: absolute;
+            bottom:30px;
+            left:50%;
+        }
+        .list{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            position: relative;
+            left:-50%;
+        }
+        .list-item{
+            float: left;
+            margin-right: 30px;
+            color: red;
+            width:30px;
+            border-top:2px solid rgba(228,228,228,0.3);
+            border-bottom:2px solid rgba(228,228,228,0.3);
+            cursor: pointer;
+        }
+        .list-item.active{
+            border-color: #fff;
+
+        }
+        .list-item:last-child{
+            margin-right: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="img-container">
+        <img src="ad1.png" width="100%" class="img" height="100%" alt="">
+    </div>
+    <div class="list-container">
+        <ul class="list">
+            <li data-num="0" class="list-item active"></li>
+            <li data-num="1" class="list-item"></li>
+            <li data-num="2" class="list-item"></li>
+        </ul>
+    </div>
+</div>
+<script src="jquery-1.8.3.min.js"></script>
+<script>
+var start={
+    imgArr:['ad1.png','ad2.png','ad3.png'],
+    length:1000,
+    time:4000,
+    timer:null,
+    animate:500,
+    index:0,
+    left:1,
+    right:-1,
+    div:$('.img-container'),
+    createImg:function(index){
+        var img=$("<img src="+this.imgArr[index]+" style='left:"+(this.length+'px')+"' height='100%' class='img' width='100%' alt=''>");
+        return img;
+    },
+    moveLeft:function(index){
+        console.log(index);
+        if (index == this.imgArr.length){
+            index = 0;
+        }
+        var img=$("<img src="+this.imgArr[index]+" style='left:"+(this.length+'px')+"' height='100%' class='img' width='100%' alt=''>");
+        this.div.append(img);
+    },
+    moveRight:function(index){
+        var img=$("<img src="+this.imgArr[index]+" style='left:"+(-this.length+'px')+"' height='100%' class='img' width='100%' alt=''>");
+        this.div.prepend(img);
+    },
+    clearInterval:function(){
+        clearInterval(this.timer);
+        this.timer = null;
+    },
+    move:function(){
+        var me=this;
+        me.div.children().first().animate({
+            'left':(me.left==1?-1*me.length+'px':0)
+        },me.animate,function(){
+            me.left==1?me.div.children().first().remove():console.log('未删除');
+            if ((me.left ==1) && (me.div.children().length>1)){
+                me.div.children().first().remove();
+            }
+        });
+        me.div.children().last().animate({
+            'left':(me.left==1?0:1*me.length+'px')
+        },me.animate,function(){
+            me.left==1?console.log('未删除'):me.div.children().last().remove();
+            if ((me.left == -1) && (me.div.children().length>1)){
+                me.div.children().last().remove();
+            }
+        });
+    },
+    changeList:function(){
+        $('.list>li').eq(this.index).addClass('active').siblings().removeClass('active');
+    },
+    listMove:function(num){
+        if (num>this.index){
+            this.left = 1;
+            this.right = -1;
+            this.index = num*1;
+            this.moveLeft(this.index);
+        }else if (num<this.index){
+            this.left = -1;
+            this.right = 1;
+            this.index = num*1;
+            this.moveRight(this.index);
+        }
+        this.move();
+        this.changeList();
+        console.log(this.index);
+    },
+    setInterval:function(){
+        var me=this;
+        me.left = 1;
+        me.right = -1;
+        this.timer = setInterval(function(){
+            me.moveLeft(me.index+1);
+            console.log(me.div.children().first().css('left'));
+            me.move();
+            if (me.index>=me.imgArr.length-1){
+                me.index = 0;
+            }else{
+                me.index++;
+            }
+            me.changeList();
+        },me.time)
+    }
+};
+start.setInterval();
+$('.container').mouseenter(function(e){
+        console.log('enter');
+        start.clearInterval();
+});
+$('.container').mouseleave(function(e){
+        console.log('leave');
+        start.setInterval();
+});
+$('.list-item').mouseenter(function(e){
+    var num=$(e.target).attr('data-num');
+    if (num == start.index){
+        console.log('不变');
+    }else{
+        start.listMove(num);
+    }
+});
+</script>
+</body>
+</html>
